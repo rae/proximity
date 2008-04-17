@@ -2,8 +2,8 @@
 //  main.m
 //  Proximity
 //
-//  Created by Denver Timothy on 1/8/07.
-//  Copyright My New Company Name 2007. All rights reserved.
+//  Copyright (c) Denver Timothy
+//  See License.txt for license information.
 //
 
 #import <Cocoa/Cocoa.h>

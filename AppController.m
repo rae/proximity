@@ -1,3 +1,12 @@
+//
+//  AppController.m
+//  Proximity
+//
+//  Copyright (c) Denver Timothy
+//  See License.txt for license information.
+//
+
+
 #import "AppController.h"
 #import <IOBluetoothUI/objc/IOBluetoothDeviceSelectorController.h>
 

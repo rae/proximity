@@ -2,8 +2,8 @@
 //  BluetoothProximityController.m
 //  Proximity
 //
-//  Created by Denver Timothy on 1/8/07.
-//  Copyright 2007 Denver Timothy. All rights reserved.
+//  Copyright (c) Denver Timothy
+//  See License.txt for license information.
 //
 
 #import "BluetoothProximityController.h"

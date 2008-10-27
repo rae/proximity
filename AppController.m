@@ -2,8 +2,12 @@
 
 @implementation AppController
 
+#pragma mark -
+#pragma mark Delegate Methods
+
 - (void)awakeFromNib
-{	
+{
+	NSLog( @"Done loading NIB" );
 	failures = 0;
 	priorStatus = OutOfRange;
 	
@@ -16,10 +20,18 @@
 	[self saveUserDefaults];
 }
 
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+	[self stopMonitoring];
+}
+
 #pragma mark -
+#pragma mark AppController methods
 
 - (void)loadUserDefaults
 {
+	NSLog( @"Loading user defaults" );
+	
 	NSUserDefaults *defaults;
 	NSData *deviceAsData;
 	
@@ -32,8 +44,9 @@
 		device = [NSKeyedUnarchiver unarchiveObjectWithData:deviceAsData];
 		[device retain];
 		[deviceName setStringValue:[NSString stringWithFormat:@"%@ (%@)",
-			[device getName], [device getAddressString]]];
-				
+									[device getName], [device getAddressString]]];
+		
+		NSLog( @"Setting device state" );
 		if( [self isInRange] ) {
 			[statusItem setTitle:@"O"];
 			priorStatus = InRange;
@@ -63,17 +76,21 @@
 	// Monitoring enabled
 	BOOL monitoring = [defaults boolForKey:@"enabled"];
 	if( monitoring ) {
+		NSLog( @"Setting monitoring state" );
 		[enabledButton setState:NSOnState];
 		[self startMonitoring];
 	}
 	
 	// Check for updates on startup
+	NSLog( @"Settings updates state" );
 	BOOL updating = [defaults boolForKey:@"updating"];
 	if( updating ) {
 		[updatesEnabled setState:NSOnState];
 		[self checkForUpdatesOnStartup];
 	}
 	
+	// Run scripts on startup
+	NSLog( @"Setting startup state" );
 	BOOL startup = [defaults boolForKey:@"executeOnStartup"];
 	if( startup )
 	{
@@ -93,6 +110,7 @@
 
 - (void)saveUserDefaults
 {
+	NSLog( @"Saving user defaults" );
 	NSUserDefaults *defaults;
 	NSData *deviceAsData;
 	
@@ -136,94 +154,6 @@
 	[self startMonitoring];
 }
 
-- (BOOL)isInRange
-{
-	if( device && [device openConnection] == kIOReturnSuccess ) {
-		[device closeConnection];
-		return true;
-	}
-	
-	return false;
-}
-
-- (void)startMonitoring
-{
-	timer = [NSTimer scheduledTimerWithTimeInterval:[timerInterval intValue]
-											 target:self
-										   selector:@selector(handleTimer:)
-										   userInfo:nil
-											repeats:NO];
-	[timer retain];
-}
-
-- (void)startErrorTimer
-{
-	timer = [NSTimer scheduledTimerWithTimeInterval:[errorScanInterval intValue]
-											target:self
-										  selector:@selector(handleTimer:)
-										  userInfo:nil
-										   repeats:NO];
-	[timer retain];
-}
-
-- (void)handleTimer:(NSTimer *)theTimer
-{
-	if( [self isInRange] )
-	{
-		if( priorStatus == OutOfRange ) {
-			priorStatus = InRange;
-			[statusItem setTitle:@"O"];
-			[self runInRangeScript];
-		}
-		
-		failures = 0;
-	}
-	else
-	{
-		failures++;
-		
-		if( priorStatus == InRange )
-		{
-			if( failures == [errorScans intValue] )
-			{
-				[self startErrorTimer];
-				return;				
-			}
-			else
-			{
-				priorStatus = OutOfRange;
-				[statusItem setTitle:@"X"];
-				[self runOutOfRangeScript];
-			}
-		}
-	}
-	
-	[self startMonitoring];
-}
-
-- (void)runOutOfRangeScript
-{
-	NSAppleScript *script;
-	NSDictionary *errDict;
-	NSAppleEventDescriptor *ae;
-	
-	script = [[NSAppleScript alloc]
-		initWithContentsOfURL:[NSURL fileURLWithPath:[outOfRangeScriptPath stringValue]] 
-						error:&errDict];
-	ae = [script executeAndReturnError:&errDict];	
-}
-
-- (void)runInRangeScript
-{
-	NSAppleScript *script;
-	NSDictionary *errDict;
-	NSAppleEventDescriptor *ae;
-	
-	script = [[NSAppleScript alloc]
-		initWithContentsOfURL:[NSURL fileURLWithPath:[inRangeScriptPath stringValue]]
-						error:&errDict];
-	ae = [script executeAndReturnError:&errDict];	
-}
 
 - (void)createMenuBar
 {
@@ -232,13 +162,11 @@
 	
 	myMenu = [[NSMenu alloc] init];
 	
-	menuItem = [myMenu addItemWithTitle:@"Preferences"
-								 action:@selector(showWindow:) keyEquivalent:@""];
+	menuItem = [myMenu addItemWithTitle:@"Preferences" action:@selector(showWindow:) keyEquivalent:@""];
 	
 	[menuItem setTarget:self];
 	
-	[myMenu addItemWithTitle:@"Quit"
-					  action:@selector(terminate:) keyEquivalent:@""];
+	[myMenu addItemWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@""];
 	
 	statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
 	[statusItem retain];
@@ -277,7 +205,7 @@
 		if( thisVersionMajor < currentVersionMajor || thisVersionMinor < currentVersionMinor )
 		{
 			if( NSRunAlertPanel( @"Proxmity", @"A new version of Proximity is availabe for download.",
-								 @"Close", @"Download", nil, nil ) == NSAlertAlternateReturn )
+								@"Close", @"Download", nil, nil ) == NSAlertAlternateReturn )
 			{
 				[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://reduxcomputing.com/proximity/"]];
 			}
@@ -285,7 +213,132 @@
 	}
 }
 
+
 #pragma mark -
+#pragma mark ProximityMonitor Methods
+
+- (BOOL)isInRange
+{
+	if( device && [device openConnection] == kIOReturnSuccess ) {
+		[device closeConnection];
+		NSLog( @"Device is in-range" );
+		return true;
+	}
+	
+	NSLog( @"Device is out-of-range" );
+	return false;
+}
+
+- (void)startMonitoring
+{
+	if( [enabledButton state] == NSOnState )
+	{
+		NSLog( @"Starting regular timer" );
+		
+		timer = [NSTimer scheduledTimerWithTimeInterval:[timerInterval intValue]
+												 target:self
+											   selector:@selector(handleTimer:)
+											   userInfo:nil
+												repeats:NO];
+		[timer retain];
+	}
+	else
+	{
+		NSLog( @"Attempted to start timer but monitoring is disabled" );
+	}
+}
+
+- (void)stopMonitoring
+{
+	NSLog( @"Stopping monitoring" );
+	[timer invalidate];
+	failures = 0;
+}
+
+- (void)handleTimer:(NSTimer *)theTimer
+{
+	NSLog( @"Handling timer" );
+	
+	if( [self isInRange] )
+	{
+		if( priorStatus == OutOfRange ) {
+			priorStatus = InRange;
+			[statusItem setTitle:@"O"];
+			[self runInRangeScript];
+		}
+		
+		failures = 0;
+	}
+	else
+	{
+		failures++;
+		
+		NSLog( @"Failures: %d", failures );
+		
+		if( failures <= [errorScans intValue] )
+		{
+			[self startErrorTimer];
+			return;				
+		}
+		else
+		{
+			if( priorStatus == InRange )
+			{
+				failures = 0;
+				priorStatus = OutOfRange;
+				[statusItem setTitle:@"X"];
+				[self runOutOfRangeScript];
+			}
+		}
+	}
+	
+	[self startMonitoring];
+}
+
+- (void)startErrorTimer
+{
+	NSLog( @"Starting error timer" );
+	timer = [NSTimer scheduledTimerWithTimeInterval:[errorScanInterval intValue]
+											 target:self
+										   selector:@selector(handleTimer:)
+										   userInfo:nil
+											repeats:NO];
+	[timer retain];
+}
+
+- (void)runOutOfRangeScript
+{
+	NSLog( @"Runnning out-of-range script" );
+	
+	NSAppleScript *script;
+	NSDictionary *errDict;
+	NSAppleEventDescriptor *ae;
+	
+	script = [[NSAppleScript alloc]
+			  initWithContentsOfURL:[NSURL fileURLWithPath:[outOfRangeScriptPath stringValue]] 
+			  error:&errDict];
+	ae = [script executeAndReturnError:&errDict];	
+}
+
+- (void)runInRangeScript
+{
+	NSLog( @"Running in-range script" );
+	
+	NSAppleScript *script;
+	NSDictionary *errDict;
+	NSAppleEventDescriptor *ae;
+	
+	script = [[NSAppleScript alloc]
+			  initWithContentsOfURL:[NSURL fileURLWithPath:[inRangeScriptPath stringValue]]
+			  error:&errDict];
+	ae = [script executeAndReturnError:&errDict];	
+}
+
+
+
+
+#pragma mark -
+#pragma mark Interface Methods
 
 - (IBAction)changeDevice:(id)sender
 {
@@ -303,14 +356,16 @@
 	[device retain];
 	
 	[deviceName setStringValue:[NSString stringWithFormat:@"%@ (%@)",
-		[device getName],
-		[device getAddressString]]];
+								[device getName],
+								[device getAddressString]]];
 }
 
 - (IBAction)changeEnabledState:(id)sender
 {
 	if( [enabledButton state] == NSOnState )
 		[self startMonitoring];
+	else
+		[self stopMonitoring];
 }
 
 - (IBAction)changeInRangeScript:(id)sender
@@ -358,7 +413,7 @@
 		if( thisVersionMajor < currentVersionMajor || thisVersionMinor < currentVersionMinor )
 		{
 			if( NSRunAlertPanel( @"Proxmity", @"A new version of Proximity is availabe for download.",
-							 @"Close", @"Download", nil, nil ) == NSAlertAlternateReturn )
+								@"Close", @"Download", nil, nil ) == NSAlertAlternateReturn )
 			{
 				[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://reduxcomputing.com/proximity/"]];
 			}
@@ -366,13 +421,13 @@
 		else
 		{
 			NSRunAlertPanel( @"Proxmity", @"You are using the latest version of Proximity.",
-							 @"Close", nil, nil, nil );
+							@"Close", nil, nil, nil );
 		}
 	}
 	else
 	{
 		NSRunAlertPanel( @"Proxmity", @"Unable to download version information.",
-						 nil, nil, nil, nil );
+						nil, nil, nil, nil );
 	}
 }
 

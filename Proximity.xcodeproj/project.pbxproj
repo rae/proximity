@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		2E7E959B0EB603BA006005C0 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7E95990EB603BA006005C0 /* IOBluetooth.framework */; };
-		2E7E959C0EB603BA006005C0 /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7E959A0EB603BA006005C0 /* IOBluetoothUI.framework */; };
-		2E7E95D00EB603F2006005C0 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7E95CF0EB603F2006005C0 /* AppController.m */; };
-		2E7E95D40EB603FF006005C0 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2E7E95D30EB603FF006005C0 /* AppIcon.icns */; };
+		2E10CA190FBD00900059A159 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E10CA180FBD00900059A159 /* AppController.m */; };
+		2E10CA850FBD09DA0059A159 /* inRange.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E10CA810FBD09DA0059A159 /* inRange.png */; };
+		2E10CA860FBD09DA0059A159 /* inRangeAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E10CA820FBD09DA0059A159 /* inRangeAlt.png */; };
+		2E10CA870FBD09DA0059A159 /* outRange.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E10CA830FBD09DA0059A159 /* outRange.png */; };
+		2E10CA880FBD09DA0059A159 /* outRangeAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E10CA840FBD09DA0059A159 /* outRangeAlt.png */; };
+		2E67EBFB0FC03A780025D101 /* IOBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E67EBFA0FC03A780025D101 /* IOBluetooth.framework */; };
+		2E67EC010FC03A8F0025D101 /* IOBluetoothUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E67EC000FC03A8F0025D101 /* IOBluetoothUI.framework */; };
+		2EA9F55B0FC02F68007354EF /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2EA9F55A0FC02F68007354EF /* AppIcon.icns */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -25,11 +29,15 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2E7E95990EB603BA006005C0 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = /System/Library/Frameworks/IOBluetooth.framework; sourceTree = "<absolute>"; };
-		2E7E959A0EB603BA006005C0 /* IOBluetoothUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetoothUI.framework; path = /System/Library/Frameworks/IOBluetoothUI.framework; sourceTree = "<absolute>"; };
-		2E7E95CE0EB603F2006005C0 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
-		2E7E95CF0EB603F2006005C0 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
-		2E7E95D30EB603FF006005C0 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		2E10CA170FBD00900059A159 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		2E10CA180FBD00900059A159 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		2E10CA810FBD09DA0059A159 /* inRange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inRange.png; sourceTree = "<group>"; };
+		2E10CA820FBD09DA0059A159 /* inRangeAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inRangeAlt.png; sourceTree = "<group>"; };
+		2E10CA830FBD09DA0059A159 /* outRange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outRange.png; sourceTree = "<group>"; };
+		2E10CA840FBD09DA0059A159 /* outRangeAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = outRangeAlt.png; sourceTree = "<group>"; };
+		2E67EBFA0FC03A780025D101 /* IOBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetooth.framework; path = /System/Library/Frameworks/IOBluetooth.framework; sourceTree = "<absolute>"; };
+		2E67EC000FC03A8F0025D101 /* IOBluetoothUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOBluetoothUI.framework; path = /System/Library/Frameworks/IOBluetoothUI.framework; sourceTree = "<absolute>"; };
+		2EA9F55A0FC02F68007354EF /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Proximity_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proximity_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Proximity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proximity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,8 +49,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				2E7E959B0EB603BA006005C0 /* IOBluetooth.framework in Frameworks */,
-				2E7E959C0EB603BA006005C0 /* IOBluetoothUI.framework in Frameworks */,
+				2E67EBFB0FC03A780025D101 /* IOBluetooth.framework in Frameworks */,
+				2E67EC010FC03A8F0025D101 /* IOBluetoothUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,8 +60,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2E7E95CE0EB603F2006005C0 /* AppController.h */,
-				2E7E95CF0EB603F2006005C0 /* AppController.m */,
+				2E10CA170FBD00900059A159 /* AppController.h */,
+				2E10CA180FBD00900059A159 /* AppController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -108,7 +116,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2E7E95D30EB603FF006005C0 /* AppIcon.icns */,
+				2EA9F55A0FC02F68007354EF /* AppIcon.icns */,
+				2E10CA810FBD09DA0059A159 /* inRange.png */,
+				2E10CA820FBD09DA0059A159 /* inRangeAlt.png */,
+				2E10CA830FBD09DA0059A159 /* outRange.png */,
+				2E10CA840FBD09DA0059A159 /* outRangeAlt.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -119,8 +131,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2E7E95990EB603BA006005C0 /* IOBluetooth.framework */,
-				2E7E959A0EB603BA006005C0 /* IOBluetoothUI.framework */,
+				2E67EC000FC03A8F0025D101 /* IOBluetoothUI.framework */,
+				2E67EBFA0FC03A780025D101 /* IOBluetooth.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -172,7 +184,11 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
-				2E7E95D40EB603FF006005C0 /* AppIcon.icns in Resources */,
+				2E10CA850FBD09DA0059A159 /* inRange.png in Resources */,
+				2E10CA860FBD09DA0059A159 /* inRangeAlt.png in Resources */,
+				2E10CA870FBD09DA0059A159 /* outRange.png in Resources */,
+				2E10CA880FBD09DA0059A159 /* outRangeAlt.png in Resources */,
+				2EA9F55B0FC02F68007354EF /* AppIcon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
-				2E7E95D00EB603F2006005C0 /* AppController.m in Sources */,
+				2E10CA190FBD00900059A159 /* AppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +231,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -232,6 +252,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Proximity_Prefix.pch;
@@ -251,7 +275,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.4;
 			};
 			name = Debug;
 		};
@@ -263,7 +287,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.4;
 			};
 			name = Release;
 		};

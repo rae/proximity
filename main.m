@@ -2,8 +2,8 @@
 //  main.m
 //  Proximity
 //
-//  Created by Denver Timothy on 10/27/08.
-//  Copyright __MyCompanyName__ 2008. All rights reserved.
+//  Created by Denver Timothy on 5/14/09.
+//  Copyright __MyCompanyName__ 2009. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

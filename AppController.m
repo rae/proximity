@@ -344,7 +344,7 @@
 
 - (IBAction)donate:(id)sender
 {
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://reduxcomputing.com/proximity/"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://reduxcomputing.com/donate.php"]];
 }
 
 - (IBAction)enableMonitoring:(id)sender

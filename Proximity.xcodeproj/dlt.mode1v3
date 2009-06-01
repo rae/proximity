@@ -278,8 +278,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>22</integer>
-									<integer>21</integer>
+									<integer>13</integer>
+									<integer>7</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -303,7 +303,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>322 66 1098 812 0 0 1440 878 </string>
+						<string>108 66 1098 812 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -321,7 +321,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppController.m</string>
+								<string>AppController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -329,16 +329,16 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppController.m</string>
+										<string>AppController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2E9A79010FC44B7B0054A42B</string>
+										<string>2E9A79660FC4D24A0054A42B</string>
 										<key>history</key>
 										<array>
 											<string>2E9A77B70FC31F100054A42B</string>
+											<string>2E9A79250FC486CB0054A42B</string>
 											<string>2E9A78FA0FC44B7B0054A42B</string>
-											<string>2E9A78FB0FC44B7B0054A42B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -350,6 +350,7 @@
 											<string>2E9A78FE0FC44B7B0054A42B</string>
 											<string>2E9A78FF0FC44B7B0054A42B</string>
 											<string>2E9A79000FC44B7B0054A42B</string>
+											<string>2E9A79260FC486CB0054A42B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -363,7 +364,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {890, 766}}</string>
 								<key>RubberWindowFrame</key>
-								<string>322 66 1098 812 0 0 1440 878 </string>
+								<string>108 66 1098 812 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -383,7 +384,7 @@
 								<key>Frame</key>
 								<string>{{0, 771}, {890, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>322 66 1098 812 0 0 1440 878 </string>
+								<string>108 66 1098 812 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -549,7 +550,7 @@
 		<string>/Users/dlt/Desktop/trunk/Proximity.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>322 66 1098 812 0 0 1440 878 </string>
+	<string>108 66 1098 812 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

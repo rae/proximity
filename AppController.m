@@ -115,7 +115,7 @@
 
 - (BOOL)newVersionAvailable
 {
-	NSURL *url = [NSURL URLWithString:@"http://reduxcomputing.com/download/Proximity-test.plist"];
+	NSURL *url = [NSURL URLWithString:@"http://reduxcomputing.com/download/Proximity.plist"];
 	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfURL:url];
 	NSArray *version = [[dict valueForKey:@"version"] componentsSeparatedByString:@"."];
 	

@@ -1,10 +1,4 @@
 #import <Cocoa/Cocoa.h>
-//#import <IOBluetooth/IOBluetooth.h>
-//#import <IOBluetoothUI/IOBluetoothUI.h>
-#import <IOBluetoothUI/objc/IOBluetoothDeviceSelectorController.h>
-
-int thisVersionMajor = 1;
-int thisVersionMinor = 5;
 
 typedef enum _BPStatus {
 	InRange,
@@ -22,17 +16,17 @@ typedef enum _BPStatus {
 	NSImage *outOfRangeAltImage;
 	NSImage *inRangeImage;
 	NSImage *inRangeAltImage;
-	
-    IBOutlet id checkUpdatesOnStartup;
-    IBOutlet id deviceName;
-    IBOutlet id inRangeScriptPath;
-    IBOutlet id monitoringEnabled;
-    IBOutlet id outOfRangeScriptPath;
-    IBOutlet id prefsWindow;
-    IBOutlet id progressIndicator;
-    IBOutlet id runScriptsOnStartup;
-    IBOutlet id timerInterval;
 }
+
+@property(nonatomic) IBOutlet NSButton *checkUpdatesOnStartup;
+@property(nonatomic) IBOutlet NSTextField *deviceName;
+@property(nonatomic) IBOutlet NSTextField *inRangeScriptPath;
+@property(nonatomic) IBOutlet NSButton *monitoringEnabled;
+@property(nonatomic) IBOutlet NSTextField *outOfRangeScriptPath;
+@property(nonatomic) IBOutlet NSWindow *prefsWindow;
+@property(nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
+@property(nonatomic) IBOutlet NSButton *runScriptsOnStartup;
+@property(nonatomic) IBOutlet NSTextField *timerInterval;
 
 // AppController methods
 - (void)createMenuBar;
@@ -50,8 +44,6 @@ typedef enum _BPStatus {
 // UI methods
 - (IBAction)changeDevice:(id)sender;
 - (IBAction)checkConnectivity:(id)sender;
-- (IBAction)checkForUpdates:(id)sender;
-- (IBAction)donate:(id)sender;
 - (IBAction)enableMonitoring:(id)sender;
 - (IBAction)inRangeScriptChange:(id)sender;
 - (IBAction)inRangeScriptClear:(id)sender;

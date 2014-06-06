@@ -5,7 +5,9 @@ typedef enum _BPStatus {
 	OutOfRange
 } BPStatus;
 
-@interface AppController : NSObject
+@interface AppController : NSObject<NSApplicationDelegate,
+									CBCentralManagerDelegate,
+									CBPeripheralDelegate>
 {
 	IOBluetoothDevice *device;
 	NSTimer *timer;
@@ -27,6 +29,9 @@ typedef enum _BPStatus {
 @property(nonatomic) IBOutlet NSProgressIndicator *progressIndicator;
 @property(nonatomic) IBOutlet NSButton *runScriptsOnStartup;
 @property(nonatomic) IBOutlet NSTextField *timerInterval;
+
+@property(nonatomic) CBCentralManager *manager;
+@property(nonatomic) CBPeripheral *peripheral;
 
 // AppController methods
 - (void)createMenuBar;
